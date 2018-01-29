@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+
+<html>
+<body>
+
+<h1>My First Google Map</h1>
+<select onchange="getMap(this.value)">
+  <option value="Dubai">Dubai</option>
+  <option value="ireland">Ireland</option>
+  <option value="Abu Dhabi">Abu Dhabi</option>
+  <option value="London">London</option>
+</select>
+
+<div id="map" style="width:400px;height:400px;background:yellow"></div>
+
+<script>
+
+function myMap(lat, long, x) {
+  if(lat == null){
+    lat = 0
+    long = 0
+    x = 10
+  }
+
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(lat, long), zoom: x
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+function getMap(place){
+  if(place == "Dubai"){
+    myMap(25.276987, 55.296249, 15);
+
+  }
+  else if (place == "ireland"){
+      myMap(53.3378, -6.2485, 15);
+    }
+    else if (place == "Abu Dhabi"){
+      myMap(24.466667, 54.366669, 15);
+    }
+    else if (place == "London"){
+      myMap(51.5074, 0.1277, 10)
+    }
+
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDudROUbhRF_IPOogM5pIcaDYk03CjVQCM&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
